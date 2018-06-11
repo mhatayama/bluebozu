@@ -1,3 +1,3 @@
-# mysite_app
+# bluebozu
 
 This is an app for serving my web site.
