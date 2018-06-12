@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @post.title %></title>
+    <title><%= @title || @post.title %></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Source+Code+Pro" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -18,19 +18,7 @@
 
     <nav></nav>
 
-    <section>
-      <article>
-        <div class="title"><%= @post.title %></div>
-        <div>
-          <span class="date"><%= @post.date.strftime($cfg[:date_format]) %></span>
-          <a href="/category/<%= @post.category %>" class="category"><%= @post.category %></a>
-          <a href="/<%= @post.post_id %>" class="permlink">∞</a>
-        </div>
-        <div class="content">
-          <%= @markdown.render(@post.content) %>
-        </div>
-      </article>
-    </section>
+    <%= yield %>
 
     <footer>
       <div class="copyright">

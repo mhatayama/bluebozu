@@ -37,10 +37,11 @@ header .first-letter {
   font-size: 150%;
 }
 
-nav {
-}
+nav {}
 
-section {
+section {}
+
+article {
   margin: 5px;
   padding: 5px;
 }
@@ -52,7 +53,7 @@ article .title {
 article .date {
   color: gray;
 }
-article a.category {
+article .category {
   background-color: lightskyblue;
   color: white;
   border-radius: 4px;
@@ -104,4 +105,13 @@ header a:hover {
 li {
   margin: 0.1em 0.0em 0.1em 2.0em;
   padding: 0.1em 0.0em 0.1em 0.0em;
+}
+
+pre {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.8em;
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  padding: 0.5em;
+  inline: inline-block;
 }
