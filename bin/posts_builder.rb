@@ -1,8 +1,10 @@
 require './config/config'
+
 require 'sequel'
 DB = Sequel.connect($cfg[:sequel_conn])
-require 'find'
+
 require './lib/bluebozu/post'
+require 'find'
 
 def create_table
   DB.drop_table?(:posts)
