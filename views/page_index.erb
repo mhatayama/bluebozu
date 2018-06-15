@@ -1,4 +1,6 @@
-<% @posts.each do |post| %>
-  <% @post = post %>
-  <%= erb :partial_post %>
-<% end %>
+<section>
+  <% @posts.each do |post| %>
+    <% @post = post %>
+    <%= erb :partial_post %>
+  <% end %>
+</section>
