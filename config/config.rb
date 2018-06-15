@@ -1,9 +1,5 @@
-require 'sequel'
-require 'redcarpet'
-
-DB = Sequel.connect('sqlite://db/posts.db')
-REDCARPET = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-  autolink: true, tables: true, fenced_code_blocks: true)
-
 $cfg = {}
-$cfg[:date_format] = "%b-%d-%Y"
+$cfg[:sequel_conn] = 'sqlite://db/posts.db'
+$cfg[:redcarpet_opts] = {autolink: true, tables: true, fenced_code_blocks: true}
+$cfg[:date_format] = '%b-%d-%Y'
+$cfg[:posts_per_page] = 10

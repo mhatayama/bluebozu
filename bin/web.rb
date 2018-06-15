@@ -1,7 +1,14 @@
-require 'sinatra'
-require 'redcarpet'
 require './config/config'
-require './lib/bouzu'
+
+require 'sequel'
+DB = Sequel.connect($cfg[:sequel_conn])
+
+require 'redcarpet'
+REDCARPET = Redcarpet::Markdown.new(
+  Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
+
+require "./lib/bluebozu/post"
+require 'sinatra'
 
 set :static, true
 set :public_folder, "static"
