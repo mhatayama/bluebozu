@@ -16,7 +16,7 @@ set :views, "views"
 set :layout => :layout
 
 get '/' do
-  @title = 'MASATO HATAYAMA'
+  @title = $cfg[:title]
   @posts = Post.reverse_order(:date)
   erb :page_index
 end
