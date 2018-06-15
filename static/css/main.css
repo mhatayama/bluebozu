@@ -16,6 +16,8 @@ body {
   margin: auto;
   font-family: 'Nunito', sans-serif;
   line-height: 1.3;
+  background-color: #000;
+  color: #DDD;
 }
 
 header {
@@ -28,10 +30,10 @@ header .title {
   margin: 0.5em 0.0em 0.5em 0.0em;
 }
 header .first-name {
-  color: gray;
+  color: #777;
 }
 header .family-name {
-  color: lightskyblue;
+  color: #8CF;
 }
 header .first-letter {
   font-size: 150%;
@@ -51,11 +53,11 @@ article .title {
   font-weight: bold;
 }
 article .date {
-  color: gray;
+  color: #777;
 }
 article .category {
-  background-color: lightskyblue;
-  color: white;
+  background-color: #8CF;
+  color: #222;
   border-radius: 4px;
   padding: 0.0em 0.3em 0.0em 0.3em;
 }
@@ -92,7 +94,7 @@ p {
 }
 
 a {
-  color: royalblue;
+  color: #8CF;
   text-decoration: none;
 }
 a:hover {
@@ -110,8 +112,8 @@ li {
 pre {
   font-family: 'Source Code Pro', monospace;
   font-size: 0.8em;
-  background-color: whitesmoke;
-  border: 1px solid gray;
+  background-color: #222;
+  border: 1px solid #777;
   padding: 0.5em;
   inline: inline-block;
 }
