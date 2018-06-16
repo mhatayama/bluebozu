@@ -1,5 +1,4 @@
 body {
-  align: center;
   background-color: #000;
   color: #DDD;
   font-family: 'Nunito', sans-serif;
@@ -9,12 +8,12 @@ body {
 
 header {
   border-bottom: 1px solid #888;
-  margin: 0em;
+  margin: 0;
   text-align: center;
 }
 header .title {
   font-size: 1.7em;
-  margin: 0.5em 0.0em 0.5em 0.0em;
+  margin: 0.5em 0 0.5em 0;
 }
 header .first-name {
   color: #888;
@@ -25,10 +24,6 @@ header .family-name {
 header .first-letter {
   font-size: 150%;
 }
-
-nav {}
-
-section {}
 
 article {
   margin: 0.2em;
@@ -41,43 +36,44 @@ article .category {
   background-color: #8CF;
   border-radius: 4px;
   color: #222;
-  padding: 0.0em 0.3em 0.0em 0.3em;
+  padding: 0 0.3em 0 0.3em;
 }
 article .permlink {
-  margin: 0.0em 0.3em 0.0em 0.3em;
+  margin: 0 0.3em 0 0.3em;
 }
 article .content {
-  margin: 2.0em 0.0em 2.0em 0.0em;
+  margin: 2.0em 0 2.0em 0;
 }
 article .separator {
   color: #888;
-  margin: 1.0em 0.0em;
-  padding: 1.0em 0.0em;
+  margin: 1.0em 0;
+  padding: 1.0em 0;
   text-align: center;
 }
-article h1 {
+
+h1 {
   font-size: 1.5em;
   font-weight: bold;
-  margin: 0.0em;
+  margin: 0;
 }
-article h2 {
+h2 {
   font-size: 1.2em;
   font-weight: bold;
-  margin: 1.0em 0.0em;
+  margin: 1.0em 0;
 }
 
 footer {
   border-top: 1px solid #888;
-  margin: 0.0em;
+  margin: 0;
   text-align: center;
 }
 footer .copyright {
   font-size: 0.9em;
-  margin: 1.0em 0.0em 1.0em 0.0em;
+  margin: 1.0em 0 1.0em 0;
 }
 
 p {
-  margin: 1.0em 0.0em 1.0em 0.0em;
+  margin: 1.0em 0 1.0em 0;
 }
 
 a {
@@ -92,8 +88,8 @@ header a:hover {
 }
 
 li {
-  margin: 0.1em 0.0em 0.1em 2.0em;
-  padding: 0.1em 0.0em 0.1em 0.0em;
+  margin: 0.1em 0 0.1em 2.0em;
+  padding: 0.1em 0 0.1em 0;
 }
 
 pre {
@@ -101,15 +97,7 @@ pre {
   border: 1px solid #888;
   font-family: 'Source Code Pro', monospace;
   font-size: 0.9em;
-  inline: inline-block;
   padding: 0.5em;
-}
-
-code {
-  background-color: #222;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 0.9em;
-  padding: 0.0em 0.2em;
 }
 
 .prevnext {
