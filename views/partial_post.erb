@@ -3,10 +3,11 @@
   <div>
     <span class="date"><%= @post.date.strftime($cfg[:date_format]) %></span>
     <!-- <a href="/category/<%= @post.category %>" class="category"><%= @post.category %></a> -->
-    <span class="category"><%= @post.category %></span>
+    <!-- <span class="category"><%= @post.category %></span> -->
     <a href="/<%= @post.post_id %>" class="permlink">∞</a>
   </div>
   <div class="content">
     <%= REDCARPET.render(@post.content) %>
   </div>
+  <div class="separator">◆</div>
 </article>

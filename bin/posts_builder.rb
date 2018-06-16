@@ -30,7 +30,7 @@ def build_db(posts_path)
       lines = f.readlines
       first_line = lines.first
       if first_line.start_with?('# ') then
-        a_title = first_line[2..-1]
+        a_title = first_line[2..-1].chomp
         a_content = lines[1..-1].join
       else
         puts "Error: can't read title #{File.absolute_path(path)}"
