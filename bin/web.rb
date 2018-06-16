@@ -1,7 +1,10 @@
-require './config/config'
-
 require 'sequel'
-DB = Sequel.connect($cfg[:sequel_conn])
+require './config/config'
+require './lib/bluebozu/post_builder'
+DB = Sequel.sqlite
+posts_path = ARGV[0] || $cfg[:posts_path]
+PostBuilder.create_table
+PostBuilder.build(posts_path)
 
 require 'redcarpet'
 REDCARPET = Redcarpet::Markdown.new(
