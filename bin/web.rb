@@ -15,17 +15,25 @@ set :public_folder, "static"
 set :views, "views"
 set :layout => :layout
 
-get '/' do
-  @title = $cfg[:title]
-  @posts = Post.reverse_order(:date)
-  erb :page_index
+# single post
+get '/:post_id' do |post_id|
+  @post = Post[post_id]
+  erb :page_post
 end
 
-# get '/category/:category' do
-#   "category: " + params['category']
-# end
+# paging (index is page 1)
+['/', '/page/:num'].each do |path|
+  get path do
+    page_num = params.include?(:num) ? params[:num].to_i : 1
+    posts_cnt = Post.count
 
-get '/:post_id' do
-  @post = Post[params['post_id']]
-  erb :page_post
+    offset = (page_num.to_i - 1) * $cfg[:posts_per_page]
+    @posts = Post.reverse_order(:date)
+        .limit($cfg[:posts_per_page]).offset(offset)
+    @prev_page_num = page_num > 1 ? page_num - 1 : nil
+    @next_page_num = posts_cnt > page_num * $cfg[:posts_per_page] ?
+        page_num + 1 : nil
+
+    erb :page_paging
+  end
 end

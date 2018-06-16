@@ -1,0 +1,20 @@
+<section>
+  <% @posts.each do |post| %>
+    <% @post = post %>
+    <%= erb :partial_post %>
+  <% end %>
+</section>
+<div class="prevnext">
+  <div class="prev-page">
+    <% if @prev_page_num == 1 %>
+      <a href="/">« 前のページ</a>
+    <% elsif @prev_page_num %>
+      <a href="/page/<%= @prev_page_num %>">« 前のページ</a>
+    <% end %>
+  </div>
+  <div class="next-page">
+    <% if @next_page_num %>
+      <a href="/page/<%= @next_page_num %>">次のページ »</a>
+    <% end %>
+  </div>
+</div>

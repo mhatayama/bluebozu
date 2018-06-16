@@ -10,7 +10,6 @@
   }
 }
 
-/* Semantic elements */
 body {
   align: center;
   background-color: #000;
@@ -88,7 +87,6 @@ footer .copyright {
   margin: 1.0em 0.0em 1.0em 0.0em;
 }
 
-/* Other elements */
 p {
   margin: 1.0em 0.0em 1.0em 0.0em;
 }
@@ -116,4 +114,21 @@ pre {
   font-size: 0.8em;
   inline: inline-block;
   padding: 0.5em;
+}
+
+.prevnext {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.0em 0.1em 1.0em 0.1em;
+}
+
+.prev-page {
+  float: left;
+  text-align: left;
+}
+
+.next-page {
+  float: right;
+  text-align: right;
 }
