@@ -1,15 +1,3 @@
-/* Media queries */
-@media screen and (max-width: 680px) {
-  body {
-    width: 94%;
-  }
-}
-@media screen and (min-width: 679px) {
-  body {
-    width: 640px;
-  }
-}
-
 body {
   align: center;
   background-color: #000;
@@ -46,11 +34,6 @@ article {
   margin: 0.2em;
   padding: 0.2em;
 }
-
-article .title {
-  font-size: 1.8em;
-  font-weight: bold;
-}
 article .date {
   color: #888;
 }
@@ -67,20 +50,20 @@ article .content {
   margin: 2.0em 0.0em 2.0em 0.0em;
 }
 article .separator {
-  color: #222;
+  color: #888;
   margin: 1.0em 0.0em;
   padding: 1.0em 0.0em;
   text-align: center;
 }
-article h1, h2, h3, h4 {
-  font-weight: bold;
-  margin: 1.0em 0.0em;
-}
 article h1 {
   font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.0em;
 }
 article h2 {
   font-size: 1.2em;
+  font-weight: bold;
+  margin: 1.0em 0.0em;
 }
 
 footer {
@@ -117,9 +100,16 @@ pre {
   background-color: #222;
   border: 1px solid #888;
   font-family: 'Source Code Pro', monospace;
-  font-size: 0.8em;
+  font-size: 0.9em;
   inline: inline-block;
   padding: 0.5em;
+}
+
+code {
+  background-color: #222;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  padding: 0.0em 0.2em;
 }
 
 .prevnext {
@@ -137,4 +127,16 @@ pre {
 .next-page {
   float: right;
   text-align: right;
+}
+
+/* Media queries */
+@media screen and (max-device-width: 680px) {
+  body {
+    width: 94%;
+  }
+}
+@media screen and (min-device-width: 679px) {
+  body {
+    width: 640px;
+  }
 }

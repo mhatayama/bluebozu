@@ -25,6 +25,11 @@ def build_db(posts_path)
     a_date, a_post_id = File.basename(path, ".md").split('_')
     a_category = File.dirname(path).split(File::SEPARATOR).last
 
+    if a_category.start_with?('_') then
+      puts "Ignored: #{a_post_id}"
+      next
+    end
+
     a_title, a_content = nil, nil
     File.open(path, "r") do |f|
       lines = f.readlines
