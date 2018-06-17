@@ -102,6 +102,13 @@ pre {
   word-wrap: break-word;
 }
 
+p code {
+  background-color: #222;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  padding: 0 0.2em;
+}
+
 .prevnext {
   clear: both;
   display: flex;
