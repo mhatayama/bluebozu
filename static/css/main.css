@@ -98,6 +98,8 @@ pre {
   font-family: 'Source Code Pro', monospace;
   font-size: 0.9em;
   padding: 0.5em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .prevnext {
@@ -118,12 +120,12 @@ pre {
 }
 
 /* Media queries */
-@media screen and (max-device-width: 680px) {
+@media only screen and (max-width: 680px) {
   body {
-    width: 94%;
+    width: 96%;
   }
 }
-@media screen and (min-device-width: 679px) {
+@media only screen and (min-width: 679px) {
   body {
     width: 640px;
   }
