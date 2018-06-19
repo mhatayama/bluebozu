@@ -109,6 +109,22 @@ p code {
   padding: 0 0.2em;
 }
 
+table {
+  margin: auto;
+}
+
+th {
+  background-color: #222;
+  border: 1px solid #DDD;
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+}
+
+td {
+  border: 1px solid #DDD;
+  padding: 0.2em 0.4em;
+}
+
 .prevnext {
   clear: both;
   display: flex;
