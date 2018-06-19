@@ -1,26 +1,31 @@
-require 'sequel'
+require 'sinatra'
 require './config/config'
 require './lib/bluebozu/post_builder'
-DB = Sequel.sqlite
-posts_path = ARGV[0] || $cfg[:posts_path]
-PostBuilder.create_table
-PostBuilder.build(posts_path)
 
-require 'redcarpet'
-REDCARPET = Redcarpet::Markdown.new(
-  Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
+configure do
+  require 'sequel'
 
-require "./lib/bluebozu/post"
-require 'sinatra'
+  DB = Sequel.sqlite
+  posts_path = ARGV[0] || $cfg[:posts_path]
+  PostBuilder.create_table
+  PostBuilder.build(posts_path)
 
-set :static, true
-set :public_folder, "static"
-set :views, "views"
-set :layout => :layout
+  require 'redcarpet'
+  REDCARPET = Redcarpet::Markdown.new(
+    Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
+
+  require "./lib/bluebozu/post"
+
+  set :static, true
+  set :public_folder, "static"
+  set :views, "views"
+  set :layout => :layout
+end
 
 # single post
 get '/:post_id' do |post_id|
   @post = Post[post_id]
+  raise Sinatra::NotFound unless @post
   erb :page_post
 end
 
