@@ -26,6 +26,9 @@ end
 get '/:post_id' do |post_id|
   @post = Post[post_id]
   raise Sinatra::NotFound unless @post
+
+  @page_title_prefix = @post.title
+
   erb :page_post
 end
 
@@ -41,6 +44,12 @@ end
     @prev_page_num = page_num > 1 ? page_num - 1 : nil
     @next_page_num = posts_cnt > page_num * $cfg[:posts_per_page] ?
         page_num + 1 : nil
+
+    if page_num == 1
+      @page_title_prefix = "Top"
+    else
+      @page_title_prefix = "Page #{page_num}"
+    end
 
     erb :page_paging
   end
