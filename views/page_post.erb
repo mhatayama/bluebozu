@@ -1,3 +1,15 @@
 <section>
   <%= erb :partial_post %>
 </section>
+<div class="prevnext">
+  <div class="prev-page">
+    <% if @prev_post %>
+      <a href="/<%= @prev_post.post_id %>">« 前の記事</a>
+    <% end %>
+  </div>
+  <div class="next-page">
+    <% if @next_post %>
+      <a href="/<%= @next_post.post_id %>">次の記事 »</a>
+    <% end %>
+  </div>
+</div>

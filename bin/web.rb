@@ -29,6 +29,10 @@ get '/:post_id' do |post_id|
 
   @page_title_prefix = @post.title
 
+  post_date = @post.date
+  @prev_post = Post.reverse_order(:date).where{date < post_date}.first
+  @next_post = Post.order(:date).where{date > post_date}.first
+
   erb :page_post
 end
 
