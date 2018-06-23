@@ -9,14 +9,14 @@ end
 class SinglePostPageModel < PageModel
   attr_accessor :post, :prev_post, :next_post
 
-  private def initialize(titie_prefix, post, prev_post, next_post)
+  def initialize(titie_prefix, post, prev_post, next_post)
     super(title_prefix)
     @post = post
     @prev_post = prev_post
     @next_post = next_post
   end
 
-  def self.build(post_id)
+  def self.create(post_id)
     post = Post[post_id]
     return nil unless post
 
@@ -33,14 +33,14 @@ end
 class MultiPostPageModel < PageModel
   attr_accessor :posts, :prev_page_num, :next_page_num
 
-  private def initialize(title_prefix, posts, prev_page_num, next_page_num)
+  def initialize(title_prefix, posts, prev_page_num, next_page_num)
     super(title_prefix)
     @posts = posts
     @prev_page_num = prev_page_num
     @next_page_num = next_page_num
   end
 
-  def self.build(page_num)
+  def self.create(page_num)
     offset = (page_num - 1) * $cfg[:posts_per_page]
     posts = Post.reverse_order(:date)
         .limit($cfg[:posts_per_page]).offset(offset)

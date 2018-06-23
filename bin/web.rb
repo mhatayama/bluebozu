@@ -23,7 +23,7 @@ end
 
 # single post page
 get '/:post_id' do |post_id|
-  @pm = SinglePostPageModel.build(post_id)
+  @pm = SinglePostPageModel.create(post_id)
   erb :page_single_post
 end
 
@@ -31,11 +31,12 @@ end
 ['/', '/page/:num'].each do |path|
   get path do
     page_num = params.include?(:num) ? params[:num].to_i : 1
-    @pm = MultiPostPageModel.build(page_num)
+    @pm = MultiPostPageModel.create(page_num)
     erb :page_multi_posts
   end
 end
 
+# reload posts data
 get '/admin/reload' do
   posts_path = ARGV[0] || $cfg[:posts_path]
   Post.load(posts_path)
@@ -44,6 +45,7 @@ get '/admin/reload' do
   body 'Reload OK'
 end
 
+# show access stat
 get '/admin/stat' do
   sorted = ACCESS_COUNTER.sort{|(k1, v1), (k2, v2)| v2 <=> v1 }.map{|ary|
     sprintf("%4d    %s", ary[1], ary[0])
