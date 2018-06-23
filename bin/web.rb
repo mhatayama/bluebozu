@@ -15,7 +15,7 @@ configure do
     Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
 
   require "./lib/bluebozu/post"
-  require "./lib/bluebozu/page_value"
+  require "./lib/bluebozu/page_model"
 
   set :static, true
   set :public_folder, "static"
@@ -25,7 +25,7 @@ end
 
 # single post page
 get '/:post_id' do |post_id|
-  @pv = SinglePostPageValue.build(post_id)
+  @pm = SinglePostPageModel.build(post_id)
   erb :page_post
 end
 
@@ -33,7 +33,7 @@ end
 ['/', '/page/:num'].each do |path|
   get path do
     page_num = params.include?(:num) ? params[:num].to_i : 1
-    @pv = MultiPostPageValue.build(page_num)
+    @pm = MultiPostPageModel.build(page_num)
     erb :page_paging
   end
 end

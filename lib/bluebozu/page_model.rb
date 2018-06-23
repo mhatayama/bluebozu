@@ -1,4 +1,4 @@
-class PageValue
+class PageModel
   attr_accessor :title_prefix
 
   private def initialize(title_prefix)
@@ -6,7 +6,7 @@ class PageValue
   end
 end
 
-class SinglePostPageValue < PageValue
+class SinglePostPageModel < PageModel
   attr_accessor :post, :prev_post, :next_post
 
   private def initialize(titie_prefix, post, prev_post, next_post)
@@ -26,11 +26,11 @@ class SinglePostPageValue < PageValue
     prev_post = Post.reverse_order(:date).where{date < post.date}.first
     next_post = Post.order(:date).where{date > post.date}.first
 
-    SinglePostPageValue.new(title_prefix, post, prev_post, next_post)
+    SinglePostPageModel.new(title_prefix, post, prev_post, next_post)
   end
 end
 
-class MultiPostPageValue < PageValue
+class MultiPostPageModel < PageModel
   attr_accessor :posts, :prev_page_num, :next_page_num
 
   private def initialize(title_prefix, posts, prev_page_num, next_page_num)
@@ -54,6 +54,6 @@ class MultiPostPageValue < PageValue
       title_prefix = "Page #{page_num}"
     end
 
-    MultiPostPageValue.new(title_prefix, posts, prev_page_num, next_page_num)
+    MultiPostPageModel.new(title_prefix, posts, prev_page_num, next_page_num)
   end
 end

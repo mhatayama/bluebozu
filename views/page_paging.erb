@@ -1,20 +1,20 @@
 <section>
-  <% @pv.posts.each do |post| %>
+  <% @pm.posts.each do |post| %>
     <% @post = post %>
     <%= erb :partial_post %>
   <% end %>
 </section>
 <div class="prevnext">
   <div class="prev-page">
-    <% if @pv.prev_page_num == 1 %>
+    <% if @pm.prev_page_num == 1 %>
       <a href="/">« 前のページ</a>
-    <% elsif @pv.prev_page_num %>
-      <a href="/page/<%= @pv.prev_page_num %>">« 前のページ</a>
+    <% elsif @pm.prev_page_num %>
+      <a href="/page/<%= @pm.prev_page_num %>">« 前のページ</a>
     <% end %>
   </div>
   <div class="next-page">
-    <% if @pv.next_page_num %>
-      <a href="/page/<%= @pv.next_page_num %>">次のページ »</a>
+    <% if @pm.next_page_num %>
+      <a href="/page/<%= @pm.next_page_num %>">次のページ »</a>
     <% end %>
   </div>
 </div>
