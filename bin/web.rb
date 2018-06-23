@@ -15,6 +15,7 @@ configure do
     Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
 
   require "./lib/bluebozu/post"
+  require "./lib/bluebozu/page_value"
 
   set :static, true
   set :public_folder, "static"
@@ -22,39 +23,17 @@ configure do
   set :layout => :layout
 end
 
-# single post
+# single post page
 get '/:post_id' do |post_id|
-  @post = Post[post_id]
-  raise Sinatra::NotFound unless @post
-
-  @page_title_prefix = @post.title
-
-  post_date = @post.date
-  @prev_post = Post.reverse_order(:date).where{date < post_date}.first
-  @next_post = Post.order(:date).where{date > post_date}.first
-
+  @pv = SinglePostPageValue.build(post_id)
   erb :page_post
 end
 
-# paging (index is page 1)
+# multi post page (top is page 1)
 ['/', '/page/:num'].each do |path|
   get path do
     page_num = params.include?(:num) ? params[:num].to_i : 1
-    posts_cnt = Post.count
-
-    offset = (page_num.to_i - 1) * $cfg[:posts_per_page]
-    @posts = Post.reverse_order(:date)
-        .limit($cfg[:posts_per_page]).offset(offset)
-    @prev_page_num = page_num > 1 ? page_num - 1 : nil
-    @next_page_num = posts_cnt > page_num * $cfg[:posts_per_page] ?
-        page_num + 1 : nil
-
-    if page_num == 1
-      @page_title_prefix = "Top"
-    else
-      @page_title_prefix = "Page #{page_num}"
-    end
-
+    @pv = MultiPostPageValue.build(page_num)
     erb :page_paging
   end
 end
