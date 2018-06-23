@@ -9,10 +9,17 @@ configure do
   REDCARPET = Redcarpet::Markdown.new(
     Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
 
+  ACCESS_COUNTER = {}
+
   set :static, true
   set :public_folder, "static"
   set :views, "views"
   set :layout => :layout
+end
+
+before do
+  ACCESS_COUNTER[request.path_info] = 0 unless ACCESS_COUNTER.has_key?(request.path_info)
+  ACCESS_COUNTER[request.path_info] += 1
 end
 
 # single post page
@@ -28,4 +35,21 @@ end
     @pm = MultiPostPageModel.build(page_num)
     erb :page_multi_posts
   end
+end
+
+get '/admin/reload' do
+  posts_path = ARGV[0] || $cfg[:posts_path]
+  Post.load(posts_path)
+
+  headers 'Content-Type' => 'text/plain'
+  body 'Reload OK'
+end
+
+get '/admin/stat' do
+  sorted = ACCESS_COUNTER.sort{|(k1, v1), (k2, v2)| v2 <=> v1 }.map{|ary|
+    sprintf("%4d    %s", ary[1], ary[0])
+  }.join("\n")
+
+  headers 'Content-Type' => 'text/plain'
+  body sorted
 end

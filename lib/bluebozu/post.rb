@@ -2,6 +2,7 @@ require 'find'
 
 class Post < Sequel::Model
   def self.load(posts_path)
+    DB[:posts].delete
     Find.find(posts_path) do |path|
       next unless File.file?(path)
       next unless File.extname(path) == ".md"
