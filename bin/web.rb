@@ -9,7 +9,7 @@ configure do
   REDCARPET = Redcarpet::Markdown.new(
     Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
 
-  ACCESS_COUNTER = {}
+  ACCESS_COUNTER = Hash.new(0)
 
   set :static, true
   set :public_folder, "static"
@@ -18,7 +18,6 @@ configure do
 end
 
 before do
-  ACCESS_COUNTER[request.path_info] = 0 unless ACCESS_COUNTER.has_key?(request.path_info)
   ACCESS_COUNTER[request.path_info] += 1
 end
 
