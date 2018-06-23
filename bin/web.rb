@@ -1,21 +1,13 @@
 require 'sinatra'
-require './config/config'
-require './lib/bluebozu/post_builder'
+require 'redcarpet'
+require './lib/bluebozu'
 
 configure do
-  require 'sequel'
-
-  DB = Sequel.sqlite
   posts_path = ARGV[0] || $cfg[:posts_path]
-  PostBuilder.create_table
-  PostBuilder.build(posts_path)
+  Post.load(posts_path)
 
-  require 'redcarpet'
   REDCARPET = Redcarpet::Markdown.new(
     Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
-
-  require "./lib/bluebozu/post"
-  require "./lib/bluebozu/page_model"
 
   set :static, true
   set :public_folder, "static"
