@@ -26,7 +26,7 @@ end
 # single post page
 get '/:post_id' do |post_id|
   @pm = SinglePostPageModel.build(post_id)
-  erb :page_post
+  erb :page_single_post
 end
 
 # multi post page (top is page 1)
@@ -34,6 +34,6 @@ end
   get path do
     page_num = params.include?(:num) ? params[:num].to_i : 1
     @pm = MultiPostPageModel.build(page_num)
-    erb :page_paging
+    erb :page_multi_posts
   end
 end
