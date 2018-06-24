@@ -110,6 +110,14 @@ p code {
   padding: 0 0.2em;
 }
 
+
+p img {
+  height: auto;
+  margin: auto;
+  max-width: 640px;
+  width: 100%;
+}
+
 table {
   margin: auto;
 }
