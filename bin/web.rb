@@ -6,9 +6,7 @@ configure do
   posts_path = ARGV[0] || $cfg[:posts_path]
   Post.load(posts_path)
 
-  REDCARPET = Redcarpet::Markdown.new(
-    Redcarpet::Render::HTML, $cfg[:redcarpet_opts])
-
+  REDCARPET = Redcarpet::Markdown.new(CustomRender, $cfg[:redcarpet_opts])
   ACCESS_COUNTER = Hash.new(0)
 
   set :static, true

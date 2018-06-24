@@ -25,38 +25,39 @@ header .first-letter {
   font-size: 150%;
 }
 
-article {
+.single-post {
   margin: 0.2em;
   padding: 0.2em;
 }
-article .date {
+.single-post .date {
   color: #888;
 }
-article .category {
+.single-post .category {
   background-color: #8CF;
   border-radius: 4px;
   color: #222;
   padding: 0 0.3em 0 0.3em;
 }
-article .permlink {
+.single-post .permlink {
   margin: 0 0.3em 0 0.3em;
 }
-article .content {
+.single-post .content {
   margin: 2.0em 0 2.0em 0;
 }
-article .separator {
+.single-post .separator {
   color: #888;
   margin: 1.0em 0;
   padding: 1.0em 0;
   text-align: center;
 }
 
-h1 {
+h2 {
   font-size: 1.5em;
   font-weight: bold;
   margin: 0;
 }
-h2 {
+
+h3 {
   font-size: 1.2em;
   font-weight: bold;
   margin: 1.0em 0;
