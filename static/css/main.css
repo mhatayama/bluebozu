@@ -25,26 +25,26 @@ header .first-letter {
   font-size: 150%;
 }
 
-.single-post {
+section .single-post {
   margin: 0.2em;
   padding: 0.2em;
 }
-.single-post .date {
+section .single-post .date {
   color: #888;
 }
-.single-post .category {
+section .single-post .category {
   background-color: #8CF;
   border-radius: 4px;
   color: #222;
   padding: 0 0.3em 0 0.3em;
 }
-.single-post .permlink {
+section .single-post .permlink {
   margin: 0 0.3em 0 0.3em;
 }
-.single-post .content {
+section .single-post .content {
   margin: 2.0em 0 2.0em 0;
 }
-.single-post .separator {
+section .single-post .separator {
   color: #888;
   margin: 1.0em 0;
   padding: 1.0em 0;
@@ -113,10 +113,11 @@ p code {
 
 
 p img {
+  display: block;
   height: auto;
   margin: auto;
-  max-width: 640px;
-  width: 100%;
+  max-width: 100%;
+  /* width: 100%; */
 }
 
 table {
