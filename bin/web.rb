@@ -16,7 +16,7 @@ configure do
 end
 
 before do
-  ACCESS_COUNTER[request.path_info] += 1
+  ACCESS_COUNTER[request.path_info] += 1 if request.request_method == "GET"
 end
 
 # single post page
