@@ -8,6 +8,7 @@ configure do
 
   REDCARPET = Redcarpet::Markdown.new(CustomRender, $cfg[:redcarpet_opts])
   ACCESS_COUNTER = Hash.new(0)
+  START_TIME = Time.new
 
   set :static, true
   set :public_folder, "static"
@@ -50,5 +51,5 @@ get '/admin/stat' do
   }.join("\n")
 
   headers 'Content-Type' => 'text/plain'
-  body sorted
+  body "Start: #{START_TIME.to_s}\n\n" + sorted
 end
