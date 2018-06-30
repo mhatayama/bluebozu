@@ -23,6 +23,7 @@ end
 # single post page
 get '/:post_id' do |post_id|
   @pm = SinglePostPageModel.create(post_id)
+  halt unless @pm
   erb :page_single_post
 end
 
