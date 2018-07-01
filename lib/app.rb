@@ -18,7 +18,7 @@ class MyApp < Sinatra::Base
     set :views, "views"
 
     REDCARPET = Redcarpet::Markdown.new(CustomRender,
-      {autolink: true, tables: true, fenced_code_blocks: true})
+      settings.redcarpet_ext.inject({}) {|h, (k,v)| h[k.to_sym] = v; h })
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 
