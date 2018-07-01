@@ -21,8 +21,6 @@ class SinglePostPageModel < PageModel
     return nil unless post
 
     title_prefix = post.title
-
-    # post_date = post.date
     prev_post = Post.reverse_order(:date).where{date < post.date}.first
     next_post = Post.order(:date).where{date > post.date}.first
 
@@ -40,12 +38,12 @@ class MultiPostPageModel < PageModel
     @next_page_num = next_page_num
   end
 
-  def self.create(page_num)
-    offset = (page_num - 1) * $cfg[:posts_per_page]
+  def self.create(page_num, posts_per_page)
+    offset = (page_num - 1) * posts_per_page
     posts = Post.reverse_order(:date)
-        .limit($cfg[:posts_per_page]).offset(offset)
+        .limit(posts_per_page).offset(offset)
     prev_page_num = page_num > 1 ? page_num - 1 : nil
-    next_page_num = Post.count > page_num * $cfg[:posts_per_page] ?
+    next_page_num = Post.count > page_num * posts_per_page ?
         page_num + 1 : nil
 
     if page_num == 1

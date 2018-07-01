@@ -1,0 +1,9 @@
+title: 'masatohatayama.com'
+date_format: '%b-%d-%Y'
+posts_per_page: 5
+
+posts_path: '../blog_data'
+redcarpet_opts:
+  autolink: true
+  tables: true
+  fenced_code_blocks: true

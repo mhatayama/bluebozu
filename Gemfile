@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-gem 'sinatra'
-gem 'thin'
 gem 'rerun'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'thin'
 
 gem 'redcarpet'
 gem 'sequel'

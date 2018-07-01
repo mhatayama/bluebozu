@@ -1,25 +1,28 @@
-require 'sinatra/base'
 require 'redcarpet'
+require 'sinatra/base'
+require 'sinatra/config_file'
 
-require './config/config'
 require './lib/bluebozu/sequel_init'
 require './lib/bluebozu/post'
 require './lib/bluebozu/page_model'
 require './lib/bluebozu/custom_render'
 
 class MyApp < Sinatra::Base
-  configure do
-    posts_path = ARGV[0] || $cfg[:posts_path]
-    Post.load(posts_path)
+  register Sinatra::ConfigFile
+  config_file '../config/config.yml'
 
-    REDCARPET = Redcarpet::Markdown.new(CustomRender, $cfg[:redcarpet_opts])
+  configure do
+    set :layout => :layout
+    set :public_folder, "static"
+    set :static, true
+    set :views, "views"
+
+    REDCARPET = Redcarpet::Markdown.new(CustomRender,
+      {autolink: true, tables: true, fenced_code_blocks: true})
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 
-    set :static, true
-    set :public_folder, "static"
-    set :views, "views"
-    set :layout => :layout
+    Post.load(ARGV[0] || settings.posts_path)
   end
 
   before do
@@ -37,15 +40,14 @@ class MyApp < Sinatra::Base
   ['/', '/page/:num'].each do |path|
     get path do
       page_num = params.include?(:num) ? params[:num].to_i : 1
-      @pm = MultiPostPageModel.create(page_num)
+      @pm = MultiPostPageModel.create(page_num, settings.posts_per_page)
       erb :page_multi_posts
     end
   end
 
   # reload posts data
   get '/admin/reload' do
-    posts_path = ARGV[0] || $cfg[:posts_path]
-    Post.load(posts_path)
+    Post.load(ARGV[0] || settings.posts_path)
 
     headers 'Content-Type' => 'text/plain'
     body 'Reload OK'
