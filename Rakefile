@@ -5,3 +5,7 @@ Rake::TestTask.new do |t|
   t.test_files = FileList['tests/test*.rb']
   t.verbose = true
 end
+
+task :rerun do
+  sh 'rerun rackup -d .,../blog_data'
+end
