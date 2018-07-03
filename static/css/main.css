@@ -73,10 +73,6 @@ footer .copyright {
   margin: 1.0em 0 1.0em 0;
 }
 
-p {
-  margin: 1.0em 0 1.0em 1.0em;
-}
-
 a {
   color: #8CF;
   text-decoration: none;
@@ -102,6 +98,10 @@ pre {
   padding: 0.5em;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+p {
+  margin: 1.0em 0 1.0em 1.0em;
 }
 
 p code {
@@ -157,6 +157,23 @@ td {
 @media only screen and (max-width: 680px) {
   body {
     width: 96%;
+  }
+
+  header .title {
+    font-size: 1.4em;
+    margin: 0.2em 0 0.2em 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  p {
+    margin: 1.0em 0 1.0em 0;
   }
 }
 @media only screen and (min-width: 679px) {
