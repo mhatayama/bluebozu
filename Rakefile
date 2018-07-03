@@ -7,5 +7,7 @@ Rake::TestTask.new do |t|
 end
 
 task :rerun do
-  sh 'rerun rackup -d .,../blog_data'
+  require 'yaml'
+  yaml = YAML.load_file('./config/config.yml')
+  sh %(rerun rackup -d .,#{yaml["posts_path"]})
 end
