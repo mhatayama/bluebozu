@@ -3,7 +3,7 @@
   <div>
     <span class="date"><%= @post.date.strftime(settings.date_format) %></span>
     <a href="/<%= @post.post_id %>" class="permlink">∞</a>
-    <span class="category"><%= @post.category %></span>
+    <span class="category"><%= @post.category.capitalize %></span>
   </div>
   <div class="content">
     <%= REDCARPET.render(@post.content) %>
