@@ -100,6 +100,14 @@ pre {
   word-wrap: break-word;
 }
 
+blockquote p {
+  background-color: #222;
+  border: 1px solid #888;
+  font-size: 0.9em;
+  margin: 1.0em 0 1.0em 1.0em;
+  padding: 0.5em;
+}
+
 p {
   margin: 1.0em 0 1.0em 1.0em;
 }
