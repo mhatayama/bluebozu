@@ -121,11 +121,11 @@ p code {
 
 
 p img {
+  border: 1px solid #888;
   display: block;
   height: auto;
   margin: auto;
   max-width: 100%;
-  /* width: 100%; */
 }
 
 table {
