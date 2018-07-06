@@ -1,11 +1,10 @@
-require 'redcarpet'
+require 'kramdown'
 require 'sinatra/base'
 require 'sinatra/config_file'
 
 require './lib/bluebozu/sequel_init'
 require './lib/bluebozu/post'
 require './lib/bluebozu/page_model'
-require './lib/bluebozu/custom_render'
 
 class MyApp < Sinatra::Base
   register Sinatra::ConfigFile
@@ -17,8 +16,6 @@ class MyApp < Sinatra::Base
     set :static, true
     set :views, "views"
 
-    REDCARPET = Redcarpet::Markdown.new(CustomRender,
-      settings.redcarpet_ext.inject({}) {|h, (k,v)| h[k.to_sym] = v; h })
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 

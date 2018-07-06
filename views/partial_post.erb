@@ -6,7 +6,7 @@
     <span class="category"><%= @post.category.capitalize %></span>
   </div>
   <div class="content">
-    <%= REDCARPET.render(@post.content) %>
+    <%= Kramdown::Document.new(@post.content).to_html %>
   </div>
   <div class="separator">◆</div>
 </div>

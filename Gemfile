@@ -4,6 +4,6 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'thin'
 
-gem 'redcarpet'
+gem 'kramdown'
 gem 'sequel'
 gem 'sqlite3'
