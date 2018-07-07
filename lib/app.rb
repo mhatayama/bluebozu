@@ -44,7 +44,7 @@ class MyApp < Sinatra::Base
 
   # reload posts data
   get '/admin/reload' do
-    Post.load(ARGV[0] || settings.posts_path)
+    Post.load(ARGV[0] || settings.data_path)
 
     headers 'Content-Type' => 'text/plain'
     body 'Reload OK'
