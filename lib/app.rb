@@ -2,8 +2,8 @@ require 'kramdown'
 require 'sinatra/base'
 require 'sinatra/config_file'
 
-require './lib/bluebozu/sequel_init'
 require './lib/bluebozu/post'
+require './lib/bluebozu/post_base'
 require './lib/bluebozu/page_model'
 
 class MyApp < Sinatra::Base
@@ -19,7 +19,7 @@ class MyApp < Sinatra::Base
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 
-    Post.load(ARGV[0] || settings.posts_path)
+    PostBase.load(ARGV[0] || settings.data_path)
   end
 
   before do
@@ -27,8 +27,8 @@ class MyApp < Sinatra::Base
   end
 
   # single post page
-  get '/:post_id' do |post_id|
-    @pm = SinglePostPageModel.create(post_id)
+  get '/:id' do |id|
+    @pm = SinglePostPageModel.create(id)
     halt unless @pm
     erb :page_single_post
   end

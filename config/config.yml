@@ -2,4 +2,4 @@ title: 'masatohatayama.com'
 date_format: '%b-%d-%Y'
 posts_per_page: 5
 
-posts_path: '../blog_data'
+data_path: '../blog_data'

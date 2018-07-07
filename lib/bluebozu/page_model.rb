@@ -16,13 +16,16 @@ class SinglePostPageModel < PageModel
     @next_post = next_post
   end
 
-  def self.create(post_id)
-    post = Post[post_id]
+  def self.create(id)
+    post = PostBase.by_id(id)
     return nil unless post
 
     title_prefix = post.title
-    prev_post = Post.reverse_order(:date).where{date < post.date}.first
-    next_post = Post.order(:date).where{date > post.date}.first
+    prev_post = PostBase.by_order_no(post.order_no - 1)
+    next_post = PostBase.by_order_no(post.order_no + 1)
+
+    p post
+    p prev_post
 
     SinglePostPageModel.new(title_prefix, post, prev_post, next_post)
   end
@@ -40,10 +43,9 @@ class MultiPostPageModel < PageModel
 
   def self.create(page_num, posts_per_page)
     offset = (page_num - 1) * posts_per_page
-    posts = Post.reverse_order(:date)
-        .limit(posts_per_page).offset(offset)
+    posts = PostBase.by_limit_offset(posts_per_page, offset)
     prev_page_num = page_num > 1 ? page_num - 1 : nil
-    next_page_num = Post.count > page_num * posts_per_page ?
+    next_page_num = PostBase.count > page_num * posts_per_page ?
         page_num + 1 : nil
 
     if page_num == 1
