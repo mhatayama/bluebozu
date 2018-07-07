@@ -1,4 +1,4 @@
-class Post
+class Entry
   attr_reader :id, :title, :content, :date, :category
   attr_accessor :order_no
 

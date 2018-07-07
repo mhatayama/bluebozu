@@ -2,8 +2,8 @@ require 'kramdown'
 require 'sinatra/base'
 require 'sinatra/config_file'
 
-require './lib/bluebozu/post'
-require './lib/bluebozu/post_base'
+require './lib/bluebozu/entry'
+require './lib/bluebozu/entry_base'
 require './lib/bluebozu/page_model'
 
 class MyApp < Sinatra::Base
@@ -19,32 +19,32 @@ class MyApp < Sinatra::Base
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 
-    PostBase.load(ARGV[0] || settings.data_path)
+    EntryBase.load(ARGV[0] || settings.data_path)
   end
 
   before do
     ACCESS_COUNTER[request.path_info] += 1 if request.request_method == "GET"
   end
 
-  # single post page
+  # single entry page
   get '/:id' do |id|
-    @pm = SinglePostPageModel.create(id)
+    @pm = SingleEntryPageModel.create(id)
     halt unless @pm
-    erb :page_single_post
+    erb :page_single_entry
   end
 
-  # multi post page (top is page 1)
+  # multi entry page (top is page 1)
   ['/', '/page/:num'].each do |path|
     get path do
       page_num = params.include?(:num) ? params[:num].to_i : 1
-      @pm = MultiPostPageModel.create(page_num, settings.posts_per_page)
-      erb :page_multi_posts
+      @pm = MultiEntryPageModel.create(page_num, settings.entries_per_page)
+      erb :page_multi_entries
     end
   end
 
-  # reload posts data
+  # reload entries data
   get '/admin/reload' do
-    PostBase.load(ARGV[0] || settings.data_path)
+    EntryBase.load(ARGV[0] || settings.data_path)
 
     headers 'Content-Type' => 'text/plain'
     body 'Reload OK'

@@ -25,26 +25,26 @@ header .first-letter {
   font-size: 150%;
 }
 
-section .single-post {
+section .single-entry {
   margin: 0.2em;
   padding: 0.2em;
 }
-section .single-post .date {
+section .single-entry .date {
   color: #888;
 }
-section .single-post .category {
+section .single-entry .category {
   background-color: #8CF;
   border-radius: 4px;
   color: #222;
   padding: 0 0.3em 0 0.3em;
 }
-section .single-post .permlink {
+section .single-entry .permlink {
   margin: 0 0.3em 0 0.3em;
 }
-section .single-post .content {
+section .single-entry .content {
   margin: 2.0em 0 2.0em 0;
 }
-section .single-post .separator {
+section .single-entry .separator {
   color: #888;
   margin: 1.0em 0;
   padding: 1.0em 0;

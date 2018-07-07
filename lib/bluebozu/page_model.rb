@@ -6,46 +6,43 @@ class PageModel
   end
 end
 
-class SinglePostPageModel < PageModel
-  attr_accessor :post, :prev_post, :next_post
+class SingleEntryPageModel < PageModel
+  attr_accessor :entry, :prev_entry, :next_entry
 
-  def initialize(titie_prefix, post, prev_post, next_post)
+  def initialize(titie_prefix, entry, prev_entry, next_entry)
     super(title_prefix)
-    @post = post
-    @prev_post = prev_post
-    @next_post = next_post
+    @entry = entry
+    @prev_entry = prev_entry
+    @next_entry = next_entry
   end
 
   def self.create(id)
-    post = PostBase.by_id(id)
-    return nil unless post
+    entry = EntryBase.by_id(id)
+    return nil unless entry
 
-    title_prefix = post.title
-    prev_post = PostBase.by_order_no(post.order_no - 1)
-    next_post = PostBase.by_order_no(post.order_no + 1)
+    title_prefix = entry.title
+    prev_entry = EntryBase.by_order_no(entry.order_no - 1)
+    next_entry = EntryBase.by_order_no(entry.order_no + 1)
 
-    p post
-    p prev_post
-
-    SinglePostPageModel.new(title_prefix, post, prev_post, next_post)
+    SingleEntryPageModel.new(title_prefix, entry, prev_entry, next_entry)
   end
 end
 
-class MultiPostPageModel < PageModel
-  attr_accessor :posts, :prev_page_num, :next_page_num
+class MultiEntryPageModel < PageModel
+  attr_accessor :entries, :prev_page_num, :next_page_num
 
-  def initialize(title_prefix, posts, prev_page_num, next_page_num)
+  def initialize(title_prefix, entries, prev_page_num, next_page_num)
     super(title_prefix)
-    @posts = posts
+    @entries = entries
     @prev_page_num = prev_page_num
     @next_page_num = next_page_num
   end
 
-  def self.create(page_num, posts_per_page)
-    offset = (page_num - 1) * posts_per_page
-    posts = PostBase.by_limit_offset(posts_per_page, offset)
+  def self.create(page_num, entries_per_page)
+    offset = (page_num - 1) * entries_per_page
+    entries = EntryBase.by_limit_offset(entries_per_page, offset)
     prev_page_num = page_num > 1 ? page_num - 1 : nil
-    next_page_num = PostBase.count > page_num * posts_per_page ?
+    next_page_num = EntryBase.count > page_num * entries_per_page ?
         page_num + 1 : nil
 
     if page_num == 1
@@ -54,6 +51,6 @@ class MultiPostPageModel < PageModel
       title_prefix = "Page #{page_num}"
     end
 
-    MultiPostPageModel.new(title_prefix, posts, prev_page_num, next_page_num)
+    MultiEntryPageModel.new(title_prefix, entries, prev_page_num, next_page_num)
   end
 end

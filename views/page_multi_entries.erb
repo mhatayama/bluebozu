@@ -1,7 +1,7 @@
 <section>
-  <% @pm.posts.each do |post| %>
-    <% @post = post %>
-    <%= erb :partial_post %>
+  <% @pm.entries.each do |entry| %>
+    <% @entry = entry %>
+    <%= erb :partial_entry %>
   <% end %>
 </section>
 <div class="prevnext">

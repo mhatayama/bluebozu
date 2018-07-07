@@ -1,0 +1,16 @@
+<section>
+  <% @entry = @pm.entry %>
+  <%= erb :partial_entry %>
+</section>
+<div class="prevnext">
+  <div class="prev-page">
+    <% if @pm.prev_entry %>
+      <a href="/<%= @pm.prev_entry.id %>">« 前の記事</a>
+    <% end %>
+  </div>
+  <div class="next-page">
+    <% if @pm.next_entry %>
+      <a href="/<%= @pm.next_entry.id %>">次の記事 »</a>
+    <% end %>
+  </div>
+</div>

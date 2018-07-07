@@ -1,35 +1,35 @@
 require 'find'
 
-class PostBase
-  def PostBase.load(data_path)
-    @@posts = {}         # key:id, value:Post
-    @@posts_sorted = []  # Posts sorted by date (desc)
+class EntryBase
+  def EntryBase.load(data_path)
+    @@entries = {}         # key:id, value:Entry
+    @@entries_sorted = []  # Entries sorted by date (desc)
 
-    PostBase.fetch(data_path)
-    PostBase.sort
+    EntryBase.fetch(data_path)
+    EntryBase.sort
   end
 
   def self.by_id(id)
-    @@posts[id]
+    @@entries[id]
   end
 
   def self.by_order_no(order_no)
     if order_no < 0
       nil
     else
-      @@posts_sorted[order_no]
+      @@entries_sorted[order_no]
     end
   end
 
   def self.by_limit_offset(limit, offset)
-    @@posts_sorted[offset, limit]
+    @@entries_sorted[offset, limit]
   end
 
   def self.count
-    @@posts_sorted.length
+    @@entries_sorted.length
   end
 
-  def PostBase.fetch(data_path)
+  def EntryBase.fetch(data_path)
     Find.find(data_path) do |path|
       next unless File.file?(path)
       next unless File.extname(path) == ".md"
@@ -55,23 +55,23 @@ class PostBase
         end
       end
 
-      post = Post.new(id, title, content, date, category)
-      self.add(post)
+      entry = Entry.new(id, title, content, date, category)
+      self.add(entry)
 
-      puts "Saved: #{post.id}"
+      puts "Saved: #{entry.id}"
     end
   end
 
   def self.sort
-    @@posts_sorted = @@posts.values.sort{ |a, b| b.date <=> a.date }
-    @@posts_sorted.each_with_index{ |post, i| post.order_no = i }
+    @@entries_sorted = @@entries.values.sort{ |a, b| b.date <=> a.date }
+    @@entries_sorted.each_with_index{ |e, i| e.order_no = i }
   end
 
-  def self.add(post)
-    if @@posts.include?(post.id)
-      raise "Duplicate id: #{post.id}"
+  def self.add(entry)
+    if @@entries.include?(entry.id)
+      raise "Duplicate id: #{entry.id}"
     end
-    @@posts[post.id] = post
+    @@entries[entry.id] = entry
   end
 
   private def initialize
