@@ -119,7 +119,6 @@ p code {
   padding: 0 0.2em;
 }
 
-
 p img {
   border: 1px solid #888;
   display: block;
@@ -162,7 +161,7 @@ td {
 }
 
 /* Media queries */
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 720px) {
   body {
     width: 96%;
   }
@@ -184,8 +183,8 @@ td {
     margin: 1.0em 0 1.0em 0;
   }
 }
-@media only screen and (min-width: 679px) {
+@media only screen and (min-width: 719px) {
   body {
-    width: 640px;
+    width: 680px;
   }
 }
