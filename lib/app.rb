@@ -19,7 +19,7 @@ class MyApp < Sinatra::Base
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 
-    EntryBase.load(ARGV[0] || settings.data_path)
+    EntryBase.load(settings.data_path)
   end
 
   before do
