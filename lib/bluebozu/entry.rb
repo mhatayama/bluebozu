@@ -12,23 +12,23 @@ class Entry
   end
 
   def self.fetch(fpath)
-    datestr, id = File.basename(fpath, ".md").split('_')
-    date = Date.strptime(datestr, "%Y-%m-%d")
     category = File.dirname(fpath).split(File::SEPARATOR).last
-
-    if category.start_with?('_') then
+    if category.start_with?('_')
       return nil
     end
+
+    datestr, id = File.basename(fpath, ".md").split('_')
+    date = Date.strptime(datestr, "%Y-%m-%d")
 
     title, content = nil, nil
     File.open(fpath, "r") do |f|
       lines = f.readlines
       first_line = lines.first
-      if first_line.start_with?('# ') then
+      if first_line && first_line.start_with?('# ')
         title = first_line[2..-1].chomp
         content = lines[1..-1].join
       else
-        raise "Can't read title: #{File.absolute_path(path)}"
+        raise "Can't read title: #{File.absolute_path(fpath)}"
       end
     end
 
