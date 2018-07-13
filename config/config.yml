@@ -1,6 +1,9 @@
 title: 'masatohatayama.com'
 date_format: '%b-%d-%Y'
-entries_per_page: 5
+entries_per_page:
+  development: 3
+  test: 3
+  production: 5
 
 data_path:
   development: '../blog_data'
