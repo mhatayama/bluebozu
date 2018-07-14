@@ -19,7 +19,9 @@ class MyApp < Sinatra::Base
     ACCESS_COUNTER = Hash.new(0)
     START_TIME = Time.new
 
+    tic = Time.now
     EntryBase.load(settings.data_path)
+    puts "### Load time: #{Time.now - tic} sec."
   end
 
   before do
