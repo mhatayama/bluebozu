@@ -1,8 +1,7 @@
 <div class="single-entry">
-  <h2><%= @entry.title %></h2>
+  <h2><a href="/<%= @entry.id %>"><%= @entry.title %></a></h2>
   <div>
     <span class="date"><%= @entry.date.strftime(settings.date_format) %></span>
-    <a href="/<%= @entry.id %>" class="permlink">∞</a>
     <span class="category"><%= @entry.category.capitalize %></span>
   </div>
   <div class="content">
