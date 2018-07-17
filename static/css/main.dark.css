@@ -1,13 +1,13 @@
 body {
-  background-color: #EEE;
-  color: #222;
+  background-color: #000;
+  color: #DDD;
   font-family: 'Nunito', sans-serif;
   line-height: 1.3;
   margin: auto;
 }
 
 header {
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #888;
   margin: 0;
   text-align: center;
 }
@@ -16,10 +16,10 @@ header .title {
   margin: 0.5em 0 0.5em 0;
 }
 header .first-name {
-  color: #777;
+  color: #888;
 }
 header .family-name {
-  color: #730;
+  color: #8CF;
 }
 header .first-letter {
   font-size: 150%;
@@ -30,19 +30,19 @@ section .single-entry {
   padding: 0.2em;
 }
 section .single-entry .date {
-  color: #777;
+  color: #888;
 }
 section .single-entry .category {
-  background-color: #730;
+  background-color: #8CF;
   border-radius: 4px;
-  color: #DDD;
+  color: #222;
   padding: 0 0.3em 0 0.3em;
 }
 section .single-entry .content {
   margin: 2.0em 0 2.0em 0;
 }
 section .single-entry .separator {
-  color: #777;
+  color: #888;
   margin: 1.0em 0;
   padding: 1.0em 0;
   text-align: center;
@@ -61,7 +61,7 @@ h3 {
 }
 
 footer {
-  border-top: 1px solid #777;
+  border-top: 1px solid #888;
   margin: 0;
   text-align: center;
 }
@@ -71,7 +71,7 @@ footer .copyright {
 }
 
 a {
-  color: #730;
+  color: #8CF;
   text-decoration: none;
 }
 a:hover {
@@ -87,8 +87,8 @@ li {
 }
 
 pre {
-  background-color: #DDD;
-  border: 1px solid #777;
+  background-color: #222;
+  border: 1px solid #888;
   font-family: 'Source Code Pro', monospace;
   font-size: 0.9em;
   margin: 1.0em 0 1.0em 1.0em;
@@ -98,8 +98,8 @@ pre {
 }
 
 blockquote p {
-  background-color: #DDD;
-  border-left: 5px solid #777;
+  background-color: #222;
+  border-left: 5px solid #888;
   font-size: 0.9em;
   margin: 1.0em 0 1.0em 1.0em;
   padding: 0.5em;
@@ -110,14 +110,14 @@ p {
 }
 
 p code {
-  background-color: #DDD;
+  background-color: #222;
   font-family: 'Source Code Pro', monospace;
   font-size: 0.9em;
   padding: 0 0.2em;
 }
 
 p img {
-  border: 1px solid #777;
+  border: 1px solid #888;
   display: block;
   height: auto;
   margin: auto;
@@ -129,14 +129,14 @@ table {
 }
 
 th {
-  background-color: #DDD;
-  border: 1px solid #222;
+  background-color: #222;
+  border: 1px solid #DDD;
   font-weight: bold;
   padding: 0.2em 0.4em;
 }
 
 td {
-  border: 1px solid #222;
+  border: 1px solid #DDD;
   padding: 0.2em 0.4em;
 }
 
