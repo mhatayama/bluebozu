@@ -7,7 +7,7 @@ class EntryBase
       @@entries_sorted = nil  # Entries sorted by date (desc)
 
       fetch_dir(dirpath)
-      sort_entry
+      sort_entries
     end
 
     def by_id(id)
@@ -39,7 +39,7 @@ class EntryBase
       end
     end
 
-    private def sort_entry
+    private def sort_entries
       @@entries_sorted = @@entries.values.sort{ |a, b| b.date <=> a.date }
       @@entries_sorted.each_with_index{ |e, i| e.order_no = i }
     end
