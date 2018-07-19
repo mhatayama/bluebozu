@@ -3,11 +3,11 @@ require 'find'
 class EntryBase
   class << self
     def load(dirpath)
-      @@entries = {}         # key:id, value:Entry
-      @@entries_sorted = []  # Entries sorted by date (desc)
+      @@entries = {}          # key:id, value:Entry
+      @@entries_sorted = nil  # Entries sorted by date (desc)
 
       fetch_dir(dirpath)
-      sort
+      sort_entry
     end
 
     def by_id(id)
@@ -27,7 +27,7 @@ class EntryBase
     end
 
     def count
-      @@entries_sorted.length
+      @@entries.length
     end
 
     private def fetch_dir(dirpath)
@@ -39,7 +39,7 @@ class EntryBase
       end
     end
 
-    private def sort
+    private def sort_entry
       @@entries_sorted = @@entries.values.sort{ |a, b| b.date <=> a.date }
       @@entries_sorted.each_with_index{ |e, i| e.order_no = i }
     end
