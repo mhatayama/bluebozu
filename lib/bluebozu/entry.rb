@@ -17,7 +17,8 @@ class Entry
       return nil
     end
 
-    datestr, id = File.basename(fpath, ".md").split('_')
+    datestr = File.basename(fpath, ".md")[0..10]
+    id = File.basename(fpath, ".md")[11..-1]
     date = Date.strptime(datestr, "%Y-%m-%d")
 
     title, content = nil, nil
