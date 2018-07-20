@@ -2,7 +2,9 @@
   <h2><a href="/<%= @entry.id %>"><%= @entry.title %></a></h2>
   <div>
     <span class="date"><%= @entry.date.strftime(settings.date_format) %></span>
-    <span class="category"><%= @entry.category.capitalize %></span>
+    <% @entry.tags.each do |t| %>
+    <span class="tag"><%= t.capitalize %></span>
+    <% end %>
   </div>
   <div class="content">
     <%= Kramdown::Document.new(@entry.content, {header_offset: 1}).to_html %>

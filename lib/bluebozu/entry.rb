@@ -1,15 +1,15 @@
 require 'yaml'
 
 class Entry
-  attr_reader :id, :title, :content, :date, :category
+  attr_reader :id, :title, :content, :date, :tags
   attr_accessor :order_no
 
-  def initialize(id, title, content, date, category)
+  def initialize(id, title, content, date, tags)
     @id = id
     @title = title
     @content = content
     @date = date
-    @category = category
+    @tags = tags.split(',')
     @order_no = nil
   end
 
@@ -18,7 +18,7 @@ class Entry
     id = File.basename(fpath, ".md")[11..-1]
     date = Date.strptime(datestr, "%Y-%m-%d")
 
-    title, category, content = nil, nil, nil
+    title, tags, content = nil, nil, nil
     File.open(fpath, "r") do |f|
       yaml_flg = nil
       yaml_lines, content_lines = [], []
@@ -38,10 +38,10 @@ class Entry
 
       metadata = YAML.load(yaml_lines.join("\n"))
       title = metadata['title']
-      category = metadata['tags']
+      tags = metadata['tags']
       content = content_lines.join("\n")
     end
 
-    Entry.new(id, title, content, date, category)
+    Entry.new(id, title, content, date, tags)
   end
 end

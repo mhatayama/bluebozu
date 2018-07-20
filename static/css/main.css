@@ -32,7 +32,7 @@ section .single-entry {
 section .single-entry .date {
   color: #777;
 }
-section .single-entry .category {
+section .single-entry .tag {
   background-color: #730;
   border-radius: 4px;
   color: #DDD;
