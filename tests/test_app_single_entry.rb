@@ -20,7 +20,7 @@ class AppTest < Test::Unit::TestCase
     assert last_response.ok?
     ['<h2><a href="/this-is-a-test-1">This is a test entry title</a></h2>',
       '<span class="date">Jan-01-2018</span>',
-      '<span class="category">Category01</span>',
+      '<span class="category">Test,test2</span>',
       '<p>This is the first line of the test entry.</p>',
       PREV_ENTRY, NEXT_ENTRY
     ].each{ |str| assert last_response.body.include?(str) }
